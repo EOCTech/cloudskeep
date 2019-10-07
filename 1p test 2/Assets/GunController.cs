@@ -14,6 +14,7 @@ public class GunController : MonoBehaviour
     public GameObject bullet;
     public GameObject target;
     public GameObject targetSpawn;
+    public bool canFire = true;
 
 
     // Start is called before the first frame update
@@ -33,7 +34,10 @@ public class GunController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            StartCoroutine(FireWeapon());
+            if (canFire)
+            {
+                StartCoroutine(FireWeapon());
+            }
         }
 
         if (Input.GetButtonDown("Fire2"))
@@ -43,6 +47,7 @@ public class GunController : MonoBehaviour
 
         IEnumerator FireWeapon()
         {
+            canFire = false;
             // set target to end position
             gunTarget.transform.position = GunEndPosition.transform.position;
             // wait 0.2 sec
@@ -51,6 +56,8 @@ public class GunController : MonoBehaviour
             gunTarget.transform.position = GunStartPosition.transform.position;
 
             Instantiate(bullet, GunStartPosition.transform.position, GunStartPosition.transform.rotation);
+            yield return new WaitForSeconds(1.0f);
+            canFire = true;
         }
 
     }
