@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class GunController : MonoBehaviour
 {
@@ -15,6 +16,15 @@ public class GunController : MonoBehaviour
     public GameObject target;
     public GameObject targetSpawn;
     public bool canFire = true;
+    public int TargetCount = 0;
+    public int HealItemCount = 0;
+    public float maxHealth = 100.0f;
+    public float playerHealth = 0.0f;
+    public GameObject healItem;
+    public GameObject cameraModel;
+    public static bool playerDead = false;
+    public GameObject CameraControl;
+    public GameObject rigidbodyFirstPersonController;
 
 
     // Start is called before the first frame update
@@ -32,6 +42,13 @@ public class GunController : MonoBehaviour
     {
         gunModel.transform.position = Vector3.Lerp(gunModel.transform.position, gunTarget.transform.position, 0.1f * Time.deltaTime * speed);
 
+        if (playerHealth <= 0 && !playerDead)
+        {
+            StartCoroutine(PlayerDeath());
+            print("death");
+        }
+
+
         if (Input.GetButtonDown("Fire1"))
         {
             if (canFire)
@@ -40,9 +57,23 @@ public class GunController : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.Y))
+        {
+            if (HealItemCount < 6)
+            {
+                Instantiate(healItem, targetSpawn.transform.position, targetSpawn.transform.rotation);
+                TargetCount = TargetCount + 1;
+            }
+
+        }
+
         if (Input.GetButtonDown("Fire2"))
         {
-            Instantiate(target, targetSpawn.transform.position, targetSpawn.transform.rotation);
+            if (TargetCount < 6)
+            {
+                Instantiate(target, targetSpawn.transform.position, targetSpawn.transform.rotation);
+                TargetCount = TargetCount + 1;
+            }
         }
 
         IEnumerator FireWeapon()
@@ -56,9 +87,28 @@ public class GunController : MonoBehaviour
             gunTarget.transform.position = GunStartPosition.transform.position;
 
             Instantiate(bullet, GunStartPosition.transform.position, GunStartPosition.transform.rotation);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.2f);
             canFire = true;
         }
 
+        IEnumerator PlayerDeath()
+        {
+            if (playerHealth <= 0)
+            {
+                playerDead = true;
+                cameraModel.transform.Rotate(10, 0, 0);
+                yield return new WaitForSeconds(0.1f);
+                cameraModel.transform.Rotate(10, 0, 0);
+                yield return new WaitForSeconds(0.1f);
+                cameraModel.transform.Rotate(10, 0, 0);
+                yield return new WaitForSeconds(0.1f);
+                cameraModel.transform.Rotate(10, 0, 0);
+                if (EditorApplication.isPlaying)
+                {
+                    UnityEditor.EditorApplication.isPlaying = false;
+                }
+            }
+
+        }
     }
 }

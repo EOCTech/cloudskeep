@@ -200,6 +200,15 @@ MonoBehaviour:
   bullet: {fileID: 2912986582556264279, guid: 3f4a13615c049114daf0cc1fd57006f1, type: 3}
   target: {fileID: 7897455879009907554, guid: 27065ad58308bfc4883bf0ecb716ae82, type: 3}
   targetSpawn: {fileID: 1548803094}
+  canFire: 1
+  TargetCount: 0
+  HealItemCount: 0
+  maxHealth: 100
+  playerHealth: 100
+  healItem: {fileID: 4620017927250201191, guid: 4531363c6deae3a4c951fdba87cff9fd,
+    type: 3}
+  cameraModel: {fileID: 1696989077}
+  CameraControl: {fileID: 0}
 --- !u!1 &489099494
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +806,7 @@ GameObject:
   - component: {fileID: 883800626}
   m_Layer: 0
   m_Name: RigidBodyFPSController
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -822,7 +831,7 @@ MonoBehaviour:
     StrafeSpeed: 4
     RunMultiplier: 2
     RunKey: 304
-    JumpForce: 50
+    JumpForce: 30
     SlopeCurveModifier:
       serializedVersion: 2
       m_Curve:
@@ -833,8 +842,8 @@ MonoBehaviour:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       - serializedVersion: 3
         time: 0
         value: 1
@@ -842,8 +851,8 @@ MonoBehaviour:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       - serializedVersion: 3
         time: 90
         value: 0
@@ -851,8 +860,8 @@ MonoBehaviour:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -861,14 +870,14 @@ MonoBehaviour:
     XSensitivity: 2
     YSensitivity: 2
     clampVerticalRotation: 1
-    MinimumX: -45
+    MinimumX: -90
     MaximumX: 90
-    smooth: 1
-    smoothTime: 18
+    smooth: 0
+    smoothTime: 5
     lockCursor: 1
   advancedSettings:
-    groundCheckDistance: 0.1
-    stickToGroundHelperDistance: 0.6
+    groundCheckDistance: 0.01
+    stickToGroundHelperDistance: 0.5
     slowDownRate: 20
     airControl: 0
     shellOffset: 0

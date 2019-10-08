@@ -17,6 +17,9 @@ public class TargetController : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        health = health - BulletController.damage;
+        if (other.gameObject.CompareTag("bullet"))
+        {
+            health = health - BulletController.damage;
+        }
     }
 }

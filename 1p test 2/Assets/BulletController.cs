@@ -10,7 +10,7 @@ public class BulletController : MonoBehaviour
     public float thrust = 1500.0f;
     public Rigidbody rb;
     public GameObject Gun;
-    public static float damage = 25.0f;
+    public static float damage;
 
 
     void Awake()
@@ -18,6 +18,7 @@ public class BulletController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.AddForce(bullet.transform.forward * -thrust);
         Object.Destroy(bullet, 1.0f);
+        damage = 50.0f;
     }
 
 }
