@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public GameObject bullet;
     public float thrust = 1500.0f;
     public Rigidbody rb;
@@ -18,7 +16,7 @@ public class BulletController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.AddForce(bullet.transform.forward * -thrust);
         Object.Destroy(bullet, 1.0f);
-        damage = 50.0f;
+        damage = 35.0f;
     }
 
 }
