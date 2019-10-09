@@ -86,7 +86,7 @@ public class GunController : MonoBehaviour
             gunTarget.transform.position = GunStartPosition.transform.position;
 
             Instantiate(bullet, GunStartPosition.transform.position, GunStartPosition.transform.rotation);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             canFire = true;
         }
 
