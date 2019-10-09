@@ -16,6 +16,7 @@ public class Target_Controller : MonoBehaviour
         {
             Object.Destroy(target);
             GunController.TargetCount = GunController.TargetCount - 1;
+            Object.Destroy(bullet, 0.2f);
         }
 
         if (health > maxHealth)
