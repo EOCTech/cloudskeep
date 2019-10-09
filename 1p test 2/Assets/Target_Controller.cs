@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +16,6 @@ public class Target_Controller : MonoBehaviour
         {
             Object.Destroy(target);
             GunController.TargetCount = GunController.TargetCount - 1;
-            Object.Destroy(bullet, 0.2f);
         }
 
         if (health > maxHealth)
@@ -30,6 +29,7 @@ public class Target_Controller : MonoBehaviour
         if (other.gameObject.CompareTag("bullet"))
         {
             health = health - BulletController.damage;
+            Object.Destroy(other.gameObject, 0.1f);
         }
     }
 }
