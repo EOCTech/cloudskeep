@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242d34bc9c725134a849f97cc27b0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 3213690203657301174, guid: 4ef5ed149371a484cbc2455d2ac748b0, type: 3}
   bullet: {fileID: 2912986582556264279, guid: 3f4a13615c049114daf0cc1fd57006f1, type: 3}
+  maxHealth: 100
   health: 100
   target: {fileID: 7897455879009907554}
