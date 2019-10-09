@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public GameObject bullet;
     public float thrust = 1500.0f;
     public Rigidbody rb;
