@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEditor;
 
@@ -16,7 +15,7 @@ public class GunController : MonoBehaviour
     public GameObject target;
     public GameObject targetSpawn;
     public bool canFire = true;
-    public int TargetCount = 0;
+    public static int TargetCount = 0;
     public int HealItemCount = 0;
     public float maxHealth = 100.0f;
     public float playerHealth = 0.0f;
@@ -87,7 +86,7 @@ public class GunController : MonoBehaviour
             gunTarget.transform.position = GunStartPosition.transform.position;
 
             Instantiate(bullet, GunStartPosition.transform.position, GunStartPosition.transform.rotation);
-            yield return new WaitForSeconds(0.4f); // 0.4 or later resolves #5
+            yield return new WaitForSeconds(0.4f);
             canFire = true;
         }
 
