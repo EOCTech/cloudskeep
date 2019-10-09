@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +29,7 @@ public class Target_Controller : MonoBehaviour
         if (other.gameObject.CompareTag("bullet"))
         {
             health = health - BulletController.damage;
+            Object.Destroy(other.gameObject, 0.1f);
         }
     }
 }
