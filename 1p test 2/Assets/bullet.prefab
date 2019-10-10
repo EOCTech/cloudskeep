@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2912986582556264279}
-  thrust: 1500
+  thrust: 1100
   rb: {fileID: 0}
   Gun: {fileID: 0}
